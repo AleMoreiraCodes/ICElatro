@@ -36,7 +36,7 @@ export class Deck {
             [this.cartas[i], this.cartas[j]] = [this.cartas[j], this.cartas[i]];
         }
     }
-    public distribuir(): Carta[] {
-        return this.cartas.splice(0, 8);
+    public distribuir(numCartas: number): Carta[] {
+        return this.cartas.splice(0, numCartas);
     }
 }
