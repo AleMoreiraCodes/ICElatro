@@ -1,0 +1,42 @@
+.mao-do-jogador {
+  display: flex;
+  gap: 8px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  padding: 16px 0 70px 0;
+  background: linear-gradient(to top, #fff 90%, #fff0 100%);
+  z-index: 100;
+}
+.carta {
+  border: 1px solid #888;
+  border-radius: 6px;
+  padding: 8px 12px;
+  background: #fff;
+  box-shadow: 1px 2px 6px #0002;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 40px;
+  transition: transform 0.2s cubic-bezier(.4,2,.6,1), box-shadow 0.2s;
+}
+.carta:hover {
+  transform: scale(1.2);
+  z-index: 10;
+  box-shadow: 0 4px 16px #0004;
+}
+
+.carta.selecionada {
+  transform: scale(1.2);
+  z-index: 11;
+  box-shadow: 0 4px 16px #0006;
+}
+.valor {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.naipe {
+  font-size: 1.1em;
+}

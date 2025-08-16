@@ -1,31 +1,24 @@
-import './style.css' 
+import './style.css';
 import { Deck } from './core/deck';
 import { Mao } from './core/mao';
-import type { Carta } from './types';
+import './components/MaoDoJogador';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    teste
-  </div>
-`
- 
-
- 
 function main(): void {
   const deck = new Deck();
-  deck.embaralhar(); 
+  deck.embaralhar();
   const mao = new Mao();
-
   mao.preencherAteLimite(deck);
 
-  console.log('🃏 Mão do jogador (máx. 8 cartas):');
-  mao.getCartas().forEach((carta, i) => {
-    console.log(`Carta ${i + 1}: ${carta.valor} ${carta.naipe}`);
-  });
+  // Cria o elemento customizado
+  const maoEl = document.createElement('mao-do-jogador');
+  // @ts-ignore: Propriedade customizada
+  maoEl.cartas = mao.getCartas();
 
-  console.log('🔢 Total de cartas na mão:', mao.getCartas().length);
-
-
+  const app = document.querySelector<HTMLDivElement>('#app');
+  if (app) {
+    app.innerHTML = '';
+    app.appendChild(maoEl);
+  }
 }
 
-main()
+main();
