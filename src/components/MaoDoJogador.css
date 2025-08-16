@@ -1,3 +1,42 @@
+.mao-botoes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  margin-left: 24px;
+}
+.mao-botoes button {
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 6px;
+  border: none; 
+  color: #fff;
+  box-shadow: 0 2px 8px #0002;
+  cursor: pointer; 
+} 
+.btn-jogar {
+  background: #27ae60;
+  color: #fff;
+  border: 2px solid #219150;
+  box-shadow: 0 2px 8px #27ae6040;
+  font-weight: bold;
+}
+.btn-jogar:hover {
+  background: #219150;
+  border-color: #27ae60;
+}
+.btn-descartar {
+  background: #c0392b;
+  color: #fff;
+  border: 2px solid #922b21;
+  box-shadow: 0 2px 8px #c0392b40;
+  font-weight: bold;
+}
+.btn-descartar:hover {
+  background: #922b21;
+  border-color: #c0392b;
+}
 .mao-do-jogador {
   display: flex;
   gap: 8px;
@@ -38,5 +77,5 @@
   font-weight: bold;
 }
 .naipe {
-  font-size: 1.1em;
+  font-size: 1.7em;
 }

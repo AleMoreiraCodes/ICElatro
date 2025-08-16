@@ -1,7 +1,16 @@
 import './style.css';
+import './icelatro-header.css';
 import { Deck } from './core/deck';
 import { Mao } from './core/mao';
-import './components/MaoDoJogador';
+import { MaoDoJogador } from './components/MaoDoJogador';
+
+// Adiciona arte do título no topo
+const header = document.createElement('div');
+header.className = 'icelatro-header';
+header.innerHTML = `
+  <span class="icelatro-title">ICElatro</span>
+`;
+document.body.prepend(header);
 
 function main(): void {
   const deck = new Deck();
@@ -14,11 +23,10 @@ function main(): void {
   // @ts-ignore: Propriedade customizada
   maoEl.cartas = mao.getCartas();
 
-  const app = document.querySelector<HTMLDivElement>('#app');
-  if (app) {
-    app.innerHTML = '';
-    app.appendChild(maoEl);
-  }
+  // Remove qualquer mao-do-jogador anterior
+  document.querySelectorAll('mao-do-jogador').forEach(el => el.remove());
+  // Adiciona ao final do body para garantir que fique fixo na parte inferior
+  document.body.appendChild(maoEl);
 }
 
 main();

@@ -29,6 +29,10 @@ export class MaoDoJogador extends HTMLElement {
             <span class="naipe">${carta.naipe}</span>
           </div>
         `).join('')}
+        <div class="mao-botoes">
+          <button class="btn-jogar" type="button">Jogar</button>
+          <button class="btn-descartar" type="button">Descartar</button>
+        </div>
       </div>
     `;
 
@@ -43,6 +47,13 @@ export class MaoDoJogador extends HTMLElement {
         }
         this.render();
       };
+    });
+    // Listeners dos botões (eventos reais devem ser conectados na integração)
+    this.querySelector('.btn-jogar')?.addEventListener('click', () => {
+      this.dispatchEvent(new CustomEvent('jogar', { detail: this.selecionadas }));
+    });
+    this.querySelector('.btn-descartar')?.addEventListener('click', () => {
+      this.dispatchEvent(new CustomEvent('descartar', { detail: this.selecionadas }));
     });
   }
 }
