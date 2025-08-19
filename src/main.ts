@@ -16,19 +16,41 @@ titulo.textContent = 'ICELATRO';
 
 app.appendChild(titulo);
 
-const game = new JogoController();
+const jogo = new JogoController();
 
 const mesaElement = document.createElement('mesa-element') as MesaElement;
-const baralhoElement = document.createElement('baralho-element') as BaralhoElement;
+const baralhoElement = document.createElement('deck-element') as BaralhoElement;
 const maoElement = document.createElement('mao-element') as MaoElement;
 const placarElement = document.createElement('placar-element') as PlacarElement;
 
-mesaElement.mesa = game.mesa;
-baralhoElement.baralho = game.baralho;
-maoElement.mao = game.mao;
-placarElement.placar = game.placar;
+mesaElement.mesa = jogo.mesa;
+baralhoElement.baralho = jogo.baralho;
+maoElement.mao = jogo.mao;
+placarElement.placar = jogo.placar;
 
 app.appendChild(mesaElement);
 app.appendChild(baralhoElement);
 app.appendChild(maoElement);
 app.appendChild(placarElement);
+
+const controles = document.createElement('div');
+controles.classList.add('controles');
+
+const btnJogar = document.createElement('button');
+btnJogar.textContent = 'Jogar';
+btnJogar.classList.add("jogar");
+btnJogar.addEventListener('click', () => {
+    console.log("Ola");
+});
+
+const btnDescartar = document.createElement('button');
+btnDescartar.textContent = 'Descartar';
+btnDescartar.classList.add("descartar");
+btnDescartar.addEventListener('click', () => {
+    console.log("Tchau");
+});
+
+controles.appendChild(btnJogar);
+controles.appendChild(btnDescartar);
+
+app.appendChild(controles);

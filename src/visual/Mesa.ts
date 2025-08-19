@@ -1,5 +1,4 @@
 import './Carta';
-import type { Carta } from '../model/carta';
 import { Mesa } from '../model/mesa';
 import { CartaElement } from './Carta';
 
@@ -21,15 +20,6 @@ export class MesaElement extends HTMLElement {
 
   get mesa(): Mesa {
     return this._mesa;
-  }
-
-  set ultimasJogadas(cartas: Carta[]) {
-    this._mesa.jogar(cartas);
-    this.render();
-  }
-
-  get ultimasJogadas(): Carta[] {
-    return this._mesa.getCartas();
   }
 
   private render() {

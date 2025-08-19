@@ -168,16 +168,16 @@ body::before {
 
 .hand {
   position: fixed;
-  bottom: 8px;
+  bottom: 2vh;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
-  padding: 15px 12px;
-  background: #0d3c0d;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  z-index: 2;
+  padding: 12px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.25);
+  z-index: 1;
 }
 
 .card {
@@ -196,3 +196,55 @@ body::before {
 }
 .card-red { color: rgb(229, 2, 2); }
 .card-selected { outline: 3px solid #1976d2; transform: translateY(-6px); }
+
+.controles {
+  position: fixed;
+  flex-direction: column;
+  bottom: 10px;
+  left: 16px; 
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  background: #0d3c0d;
+  border-radius: 12px 0 0 0;
+  box-shadow: -4px -4px 12px rgba(0,0,0,0.25);
+  z-index: 2;
+}
+
+.controles button {
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s, opacity 0.2s;
+}
+
+.controles button.jogar {
+  background: #0529ae;
+  color: #fff;
+  border-color: #010870;
+}
+
+.controles button.jogar:hover:not(:disabled) {
+  background: #314ee0;
+  transform: translateY(-2px);
+}
+
+.controles button.descartar {
+  background: #8b1e1e;
+  color: #fff;
+  border-color: #5a1111;
+}
+
+.controles button.descartar:hover:not(:disabled) {
+  background: #e74c3c;
+  transform: translateY(-2px);
+}
+
+.controles button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}

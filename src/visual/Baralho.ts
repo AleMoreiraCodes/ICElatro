@@ -26,7 +26,7 @@ export class BaralhoElement extends HTMLElement {
     this.innerHTML = `
       <div class="deck-container">
         <div class="deck"></div>
-        <div class="deck-count">5</div>
+        <div class="deck-count">${this.baralho.tamanho}</div>
       </div>
     `;
   }

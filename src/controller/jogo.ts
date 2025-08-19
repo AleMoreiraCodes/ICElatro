@@ -34,8 +34,8 @@ export class JogoController {
     this.placar.consumirDescarte();
   }
 
-  sacar(qtd: number) {
-    this.mao.addCartas(this.baralho.distribuir(qtd));
+  sacar() {
+    this.mao.addCartas(this.baralho.distribuir(1));
   }
 
   proximaRodada() {
