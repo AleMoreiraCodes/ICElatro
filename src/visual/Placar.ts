@@ -5,7 +5,6 @@ export class PlacarElement extends HTMLElement {
 
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
@@ -22,33 +21,30 @@ export class PlacarElement extends HTMLElement {
   }
 
   private render() {
-    if (!this.shadowRoot) return;
     if (!this._placar) return; 
 
-    this.shadowRoot.innerHTML = `
-      <style>
-        .stat {
-          padding: 8px 12px;
-          background: #222;
-          color: #fff;
-          font-family: sans-serif;
-          border-radius: 8px;
-          display: inline-block;
-        }
-        .stat b {
-          color: #0f0;
-        }
-        .actions {
-          margin-top: 6px;
-        }
-      </style>
-      <div class="stat">
-        <div>Rodada: <b>${this._placar.rodada}</b></div>
-        <div>Meta: <b>${this._placar.alvo}</b></div>
-        <div>Pontos: <b>${this._placar.pontuacao}</b></div>
-        <div>Jogadas: <b>${this._placar.jogadasRestantes}</b></div>
-        <div>Descartes: <b>${this._placar.descartesRestantes}</b></div>
-        <div class="actions"><slot name="actions"></slot></div>
+    this.innerHTML = `
+      <div class="score">
+        <div class="score-item">
+          <div class="score-item-label">Rodada: </div>
+          <div class="score-item-value">${this._placar.rodada}</div>
+        </div>
+        <div class="score-item">
+          <div class="score-item-label">Meta: </div>
+          <div class="score-item-value">${this._placar.alvo}</div>
+        </div>
+        <div class="score-item">
+          <div class="score-item-label">Pontos: </div>
+          <div class="score-item-value">${this._placar.pontuacao}</div>
+        </div>
+        <div class="score-item">
+          <div class="score-item-label">Jogadas: </div>
+          <div class="score-item-value">${this._placar.jogadasRestantes}</div>
+        </div>
+        <div class="score-item">
+          <div class="score-item-label">Descartes: </div>
+          <div class="score-item-value">${this._placar.descartesRestantes}</div>
+        </div>
       </div>
     `;
   }

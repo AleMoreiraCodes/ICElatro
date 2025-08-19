@@ -6,12 +6,13 @@ export class Mao {
   static LIMITE = 8;
 
   getCartas(): Carta[] { return [...this.cartas]; }
-  addCarta(c: Carta): void { if (this.cartas.length < Mao.LIMITE) this.cartas.push(c); }
-  addCartas(cs: Carta[]): void { cs.forEach(c => this.addCarta(c)); }
 
-  preencherAteLimite(deck: Baralho): void {
+  addCarta(carta: Carta): void { if (this.cartas.length < Mao.LIMITE) this.cartas.push(carta); }
+  addCartas(cartas: Carta[]): void { cartas.forEach(c => this.addCarta(c)); }
+
+  preencher(baralho: Baralho): void {
     const faltam = Mao.LIMITE - this.cartas.length;
-    if (faltam > 0) this.addCartas(deck.distribuir(Math.min(faltam, deck.tamanho)));
+    if (faltam > 0) this.addCartas(baralho.distribuir(Math.min(faltam, baralho.tamanho)));
   }
 
   removerIndices(indices: number[]): Carta[] {

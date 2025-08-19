@@ -1,31 +1,51 @@
+import './Carta';
 import type { Carta } from '../model/carta';
-import type { Placar } from '../model/placar';
+import { Mesa } from '../model/mesa';
+import { CartaElement } from './Carta';
 
 export class MesaElement extends HTMLElement {
-  private _ultimas: Carta[] = [];
-  
-  set ultimasJogadas(v: Carta[]){ this._ultimas = v; this.render(); }
-  
-  connectedCallback(){ this.attachShadow({mode:'open'}); this.render(); }
+  private _mesa!: Mesa;
 
-  private render(){
-    if(!this.shadowRoot) return;
-    this.shadowRoot.innerHTML = `
-      <style>
-        .board{ display:grid; grid-template-columns: 240px 1fr 240px; align-items:center; gap:24px; margin:64px auto; max-width:980px; }
-        .center{ display:flex; gap:10px; justify-content:center; align-items:center; min-height:140px; }
-        .stat{ background:#0b3d0b; color:#fff; padding:12px 16px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.25); }
-        .card{ width:64px; height:96px; border-radius:8px; background:#fff; display:flex; align-items:center; justify-content:center; border:2px solid #222; font-weight:700; user-select:none; }
-        .card.red{ color:#c00; }
-        .actions{ display:flex; gap:8px; justify-content:center; margin-top:8px; }
-        button{ padding:8px 12px; border-radius:8px; border:0; cursor:pointer; font-weight:700; }
-      </style>
-      <div class="board">
-        <slot name="left"></slot>
-        <div class="center">
-          ${this._ultimas.map(c=>`<div class="card ${c.naipe==='♥'||c.naipe==='♦'?'red':''}">${c.valor}${c.naipe}</div>`).join('') || '<div class="stat">Jogue até 5 cartas</div>'}
-        </div>
-      </div>`;
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+
+  set mesa(value: Mesa) {
+    this._mesa = value;
+    this.render();
+  }
+
+  get mesa(): Mesa {
+    return this._mesa;
+  }
+
+  set ultimasJogadas(cartas: Carta[]) {
+    this._mesa.jogar(cartas);
+    this.render();
+  }
+
+  get ultimasJogadas(): Carta[] {
+    return this._mesa.getCartas();
+  }
+
+  private render() {
+    if (!this._mesa) return;
+
+    this.innerHTML = `<div class="table"></div>`;
+
+    const center = this.querySelector('.table')!;
+    const cartas = this._mesa.getCartas();
+
+    cartas.forEach(carta => {
+      const CartaElement = document.createElement('carta-element') as CartaElement;
+      CartaElement.carta = carta;
+      center.appendChild(CartaElement);
+    });
   }
 }
+
 customElements.define('mesa-element', MesaElement);
