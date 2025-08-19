@@ -1,6 +1,6 @@
 import type { Baralho } from "../model/baralho";
 
-export class BaralhoElement extends HTMLElement {
+export default class BaralhoElement extends HTMLElement {
   private _baralho!: Baralho;
 
   constructor() {
@@ -26,7 +26,7 @@ export class BaralhoElement extends HTMLElement {
     this.innerHTML = `
       <div class="deck-container">
         <div class="deck"></div>
-        <div class="deck-count">${this.baralho.tamanho}</div>
+        <div class="deck-count">${this.baralho.getTamanho()}</div>
       </div>
     `;
   }

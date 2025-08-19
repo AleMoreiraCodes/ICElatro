@@ -1,8 +1,8 @@
 import './Carta';
-import type { CartaElement } from './Carta';
+import type CartaElement from './Carta';
 import { Mao } from '../model/mao';
 
-export class MaoElement extends HTMLElement {
+export default class MaoElement extends HTMLElement {
   private _mao?: Mao;
 
   constructor() {
@@ -13,32 +13,40 @@ export class MaoElement extends HTMLElement {
     this.render();
   }
 
-  set mao(v: Mao) {
-    this._mao = v;
+  set mao(mao: Mao) {
+    this._mao = mao;
     this.render();
   }
 
   get indicesSelecionados(): number[] {
-    return Array.from(this.querySelectorAll('carta-element'))
-      .map((el, i) => (el as any).selecionada ? i : -1)
-      .filter(i => i !== -1);
+    return this._mao ? [...this._mao['selecionadas']] : [];
   }
 
   limparSelecao() {
-    this.querySelectorAll('carta-element').forEach(el => (el as CartaElement).limparSelecao());
+    this._mao?.limparSelecao();
     this.render();
   }
 
   private render() {
     if (!this._mao) return;
-    
-    this.innerHTML = `<div class="hand"></div>`;
 
+    this.innerHTML = `<div class="hand"></div>`;
     const hand = this.querySelector('.hand')!;
-    this._mao.getCartas().forEach(c => {
-      const cartaEl = document.createElement('carta-element') as CartaElement;
-      cartaEl.carta = c;
-      hand.appendChild(cartaEl);
+
+    this._mao.getCartas().forEach((carta, index) => {
+      const cartaElement = document.createElement('carta-element') as CartaElement;
+      cartaElement.carta = carta;
+
+      if (this._mao?.estaSelecionada(index)) {
+        cartaElement.selecionada = true;
+      }
+
+      cartaElement.addEventListener('click', () => {
+        this._mao?.alternarSelecao(index);
+        this.render();
+      });
+
+      hand.appendChild(cartaElement);
     });
   }
 }

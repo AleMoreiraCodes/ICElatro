@@ -20,22 +20,26 @@ export class Placar {
   consumirJogada() {
     if (this.jogadasRestantes > 0) {
       this.jogadasRestantes--;
-    } else {
-      throw new Error('Não há mais jogadas restantes.');
     }
   }
 
   consumirDescarte() {
     if (this.descartesRestantes > 0) {
       this.descartesRestantes--;
-    } else {
-      throw new Error('Não há mais descartes restantes.');
     }
   }
 
-  resetarNovaRodada(novoAlvo: number) {
+  resetarRodada() {
+    this.rodada = 1;
+    this.alvo = 100;
+    this.pontuacao = 0;
+    this.jogadasRestantes = 5;
+    this.descartesRestantes = 3;
+  }
+
+  avancarRodada() {
     this.rodada++;
-    this.alvo = novoAlvo;
+    this.alvo = this.pontuacao * 2;
     this.pontuacao = 0;
     this.jogadasRestantes = 5;
     this.descartesRestantes = 3;

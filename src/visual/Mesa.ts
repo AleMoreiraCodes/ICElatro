@@ -1,8 +1,8 @@
 import './Carta';
 import { Mesa } from '../model/mesa';
-import { CartaElement } from './Carta';
+import CartaElement  from './Carta';
 
-export class MesaElement extends HTMLElement {
+export default class MesaElement extends HTMLElement {
   private _mesa!: Mesa;
 
   constructor() {
@@ -13,8 +13,8 @@ export class MesaElement extends HTMLElement {
     this.render();
   }
 
-  set mesa(value: Mesa) {
-    this._mesa = value;
+  set mesa(mesa: Mesa) {
+    this._mesa = mesa;
     this.render();
   }
 

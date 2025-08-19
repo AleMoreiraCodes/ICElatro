@@ -17,16 +17,16 @@ export class Baralho {
     }
   }
 
-  public embaralhar(): void {
+  embaralhar(): void {
     for (let i = this.cartas.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [this.cartas[i], this.cartas[j]] = [this.cartas[j], this.cartas[i]];
     }
   }
 
-  public distribuir(n: number): Carta[] { return this.cartas.splice(0, n); }
+  distribuir(n: number): Carta[] { return this.cartas.splice(0, n); }
   
-  public resetar(): void { this.inicializar(); this.embaralhar(); }
+  resetar(): void { this.inicializar(); this.embaralhar(); }
   
-  public get tamanho(): number { return this.cartas.length; }
+  getTamanho(): number { return this.cartas.length; }
 }

@@ -3,10 +3,10 @@ import './visual/Mao';
 import './visual/Mesa';
 import './visual/Placar';
 import { JogoController } from './controller/jogo';
-import type { MesaElement } from './visual/Mesa';
-import type { BaralhoElement } from './visual/Baralho';
-import type { MaoElement } from './visual/Mao';
-import type { PlacarElement } from './visual/Placar';
+import MesaElement from './visual/Mesa';
+import BaralhoElement from './visual/Baralho';
+import MaoElement from './visual/Mao';
+import PlacarElement from './visual/Placar';
 
 const app = document.getElementById('app')!;
 
@@ -23,10 +23,7 @@ const baralhoElement = document.createElement('deck-element') as BaralhoElement;
 const maoElement = document.createElement('mao-element') as MaoElement;
 const placarElement = document.createElement('placar-element') as PlacarElement;
 
-mesaElement.mesa = jogo.mesa;
-baralhoElement.baralho = jogo.baralho;
-maoElement.mao = jogo.mao;
-placarElement.placar = jogo.placar;
+atualizarVisual();
 
 app.appendChild(mesaElement);
 app.appendChild(baralhoElement);
@@ -40,17 +37,26 @@ const btnJogar = document.createElement('button');
 btnJogar.textContent = 'Jogar';
 btnJogar.classList.add("jogar");
 btnJogar.addEventListener('click', () => {
-    console.log("Ola");
+    jogo.jogar();
+    atualizarVisual();
 });
 
 const btnDescartar = document.createElement('button');
 btnDescartar.textContent = 'Descartar';
 btnDescartar.classList.add("descartar");
 btnDescartar.addEventListener('click', () => {
-    console.log("Tchau");
+    jogo.descartar();
+    atualizarVisual();
 });
 
 controles.appendChild(btnJogar);
 controles.appendChild(btnDescartar);
 
 app.appendChild(controles);
+
+function atualizarVisual() {
+    mesaElement.mesa = jogo.mesa;
+    baralhoElement.baralho = jogo.baralho;
+    maoElement.mao = jogo.mao;
+    placarElement.placar = jogo.placar; 
+}

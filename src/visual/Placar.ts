@@ -1,6 +1,6 @@
 import type { Placar } from "../model/placar";
 
-export class PlacarElement extends HTMLElement {
+export default class PlacarElement extends HTMLElement {
   private _placar!: Placar;
 
   constructor() {
