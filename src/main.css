@@ -1,0 +1,16 @@
+:root{ background:#0f5a0f; }
+body::before {
+  content: "ICELATRO";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.05); /* bem clarinho */
+  pointer-events: none;       /* não bloqueia clique */
+  z-index: 0;                 /* fica atrás de tudo */
+  white-space: nowrap;
+}
+#app{ min-height:100vh; }
+mao-do-jogador{ z-index:3; }
