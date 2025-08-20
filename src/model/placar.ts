@@ -9,7 +9,7 @@ export class Placar {
     this.rodada = rodada;
     this.alvo = alvo;
     this.pontuacao = 0;
-    this.jogadasRestantes = 5;   
+    this.jogadasRestantes = 4;   
     this.descartesRestantes = 3; 
   }
 
