@@ -6,38 +6,42 @@ export class Mao {
   private selecionadas: number[] = [];
   static LIMITE = 8;
 
-  getCartas(): Carta[] { 
+  get mao(): Carta[] { 
     return [...this.cartas]; 
   }
 
-  preencher(baralho: Baralho): void {
+  get maoSelecionadas(): Carta[] {
+    return this.selecionadas.map(i => this.cartas[i]);
+  }
+
+  public preencher(baralho: Baralho): void {
     const faltam = Mao.LIMITE - this.cartas.length;
     for (let i = 0; i < faltam; i++) {
       this.cartas.push(baralho.sacar());
     }
   }
 
-  sacar(baralho: Baralho): void {
+  public sacar(baralho: Baralho): void {
     if (this.cartas.length < Mao.LIMITE) {
       this.cartas.push(baralho.sacar());
     }
   }
 
-  selecionarIndice(index: number): void {
+  private selecionarIndice(index: number): void {
     if (index >= 0 && index < this.cartas.length && !this.selecionadas.includes(index) && this.selecionadas.length < 5) {
       this.selecionadas.push(index);
     }
   }
 
-  deselecionarIndice(index: number): void {
+  private deselecionarIndice(index: number): void {
     this.selecionadas = this.selecionadas.filter(i => i !== index);
   }
 
-  estaSelecionada(index: number): boolean {
+  public estaSelecionada(index: number): boolean {
     return this.selecionadas.includes(index);
   }
 
-  alternarSelecao(index: number): void {
+  public alternarSelecao(index: number): void {
     if (this.selecionadas.includes(index)) {
       this.deselecionarIndice(index);
     } else {
@@ -45,27 +49,19 @@ export class Mao {
     }
   }
 
-  limparSelecao(): void {
+  public limparSelecao(): void {
     this.selecionadas = [];
   }
-
-  getSelecionadas(): Carta[] {
-    return this.selecionadas.map(i => this.cartas[i]);
-  }
-
-  getIndicesSelecionados(): number[] {
-    return [...this.selecionadas];
-  }
   
-  descartar(): Carta[] {
-    const selecionadas = this.getSelecionadas();
+  public descartar(): Carta[] {
+    const selecionadas = this.maoSelecionadas;
     this.cartas = this.cartas.filter((_, i) => !this.selecionadas.includes(i));
     this.limparSelecao();
     return selecionadas; 
   }
 
-  jogar(): Carta[] {
-    const selecionadas = this.getSelecionadas();
+  public jogar(): Carta[] {
+    const selecionadas = this.maoSelecionadas;
     this.cartas = this.cartas.filter((_, i) => !this.selecionadas.includes(i));
     this.limparSelecao();
     return selecionadas; 

@@ -35,7 +35,7 @@ export default class MesaElement extends HTMLElement {
 
     tableContainer.appendChild(table);
 
-    const cartas = this._mesa.getCartas();
+    const cartas = this._mesa.mesa;
 
     cartas.forEach(carta => {
       const cartaElement = document.createElement('carta-element') as CartaElement;
@@ -44,7 +44,7 @@ export default class MesaElement extends HTMLElement {
     });
 
     const combinacao = document.createElement('div');
-    combinacao.innerHTML = `${this._mesa.getCombinacao() ? `<div class="combinacao">${this._mesa.getCombinacao()}</div>` : ''}`;
+    combinacao.innerHTML = `${this._mesa.combinacaoAtual ? `<div class="combinacao">${this._mesa.combinacaoAtual}</div>` : ''}`;
     tableContainer.appendChild(combinacao);
 
     this.appendChild(tableContainer);

@@ -4,12 +4,12 @@ export class Mesa {
   private cartas: Carta[] = [];
   private combinacao?: Combinacao;
 
-  jogar(cartas: Carta[]): number {
+  public jogar(cartas: Carta[]): number {
     this.cartas = [...cartas];
 
     let pontos = 0.00;
     this.cartas.forEach(carta => {
-      pontos += carta.getPontos();
+      pontos += carta.pontos;
     });
 
     this.combinacao = this.calcularCombinacao(cartas);
@@ -19,15 +19,11 @@ export class Mesa {
     return pontos;
   }
 
-  limpar(): void {
-    this.cartas = [];
-  }
-
-  getCartas(): Carta[] {
+  get mesa(): Carta[] {
     return [...this.cartas];
   }
 
-  getCombinacao(): Combinacao | undefined {
+  get combinacaoAtual(): Combinacao | undefined {
     return this.combinacao;
   }
 

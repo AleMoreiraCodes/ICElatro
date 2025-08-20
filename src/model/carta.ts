@@ -19,7 +19,7 @@ export class Carta {
     this.valor = valor;
   }
 
-  getPontos(): number {
+  get pontos(): number {
     if (this.valor === 'A') return 15;
     if (['K', 'Q', 'J'].includes(this.valor)) return 10;
     return parseInt(this.valor); 

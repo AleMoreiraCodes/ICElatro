@@ -18,7 +18,7 @@ export class JogoController {
     this.mao.preencher(this.baralho);
   }
 
-  jogar() {
+  public jogar(): void {
     const cartas = this.mao.jogar();
     const pontos = this.mesa.jogar(cartas);
 
@@ -27,12 +27,12 @@ export class JogoController {
     this.validarEstado();
   }
 
-  descartar() {
+  public descartar(): void {
     this.mao.descartar();
     this.placar.consumirDescarte();
   }
 
-  sacar() {
+  public sacar(): void {
     this.mao.sacar(this.baralho); 
   }
 

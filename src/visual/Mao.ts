@@ -33,7 +33,7 @@ export default class MaoElement extends HTMLElement {
     this.innerHTML = `<div class="hand"></div>`;
     const hand = this.querySelector('.hand')!;
 
-    this._mao.getCartas().forEach((carta, index) => {
+    this._mao.mao.forEach((carta, index) => {
       const cartaElement = document.createElement('carta-element') as CartaElement;
       cartaElement.carta = carta;
 

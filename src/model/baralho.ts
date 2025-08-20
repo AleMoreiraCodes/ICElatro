@@ -16,18 +16,24 @@ export class Baralho {
     for (const naipe of naipes) {
       for (const valor of valores) this.cartas.push(new Carta(naipe, valor));
     }
+    this.embaralhar();
   }
 
-  embaralhar(): void {
+  public embaralhar(): void {
     for (let i = this.cartas.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [this.cartas[i], this.cartas[j]] = [this.cartas[j], this.cartas[i]];
     }
   }
 
-  sacar(): Carta { return this.cartas.splice(0, 1)[0] }
+  public sacar(): Carta { 
+    return this.cartas.splice(0, 1)[0] 
+  }
   
-  resetar(): void { this.inicializar(); this.embaralhar(); }
+  public resetar(): void { 
+    this.inicializar(); 
+    this.embaralhar(); 
+  }
   
-  getTamanho(): number { return this.cartas.length; }
+  get tamanho(): number { return this.cartas.length; }
 }

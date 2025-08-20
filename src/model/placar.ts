@@ -13,23 +13,23 @@ export class Placar {
     this.descartesRestantes = 3; 
   }
 
-  adicionarPontos(p: number) {
+  public adicionarPontos(p: number): void {
     this.pontuacao += p;
   }
 
-  consumirJogada() {
+  public consumirJogada(): void {
     if (this.jogadasRestantes > 0) {
       this.jogadasRestantes--;
     }
   }
 
-  consumirDescarte() {
+  public consumirDescarte(): void {
     if (this.descartesRestantes > 0) {
       this.descartesRestantes--;
     }
   }
 
-  resetarRodada() {
+  public resetarRodada(): void  {
     this.rodada = 1;
     this.alvo = 100;
     this.pontuacao = 0;
@@ -37,7 +37,7 @@ export class Placar {
     this.descartesRestantes = 3;
   }
 
-  avancarRodada() {
+  public avancarRodada(): void {
     this.rodada++;
     this.alvo = this.alvo * 2;
     this.pontuacao = 0;
