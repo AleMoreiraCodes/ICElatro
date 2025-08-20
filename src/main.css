@@ -259,6 +259,17 @@ body::before {
   transform: translateY(-2px);
 }
 
+.controles button.reiniciar {
+  background: #ffd412;
+  color: #fff;
+  border-color: #939a00;
+}
+
+.controles button.reiniciar:hover:not(:disabled) {
+  background: #f3ec26;
+  transform: translateY(-2px);
+}
+
 .controles button:disabled {
   opacity: 0.5;
   cursor: not-allowed;

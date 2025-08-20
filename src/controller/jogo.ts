@@ -36,6 +36,15 @@ export class JogoController {
     this.mao.sacar(this.baralho); 
   }
 
+  public reiniciar(): void {
+    this.baralho = new Baralho();
+    this.mao = new Mao();
+    this.mesa = new Mesa();
+    this.placar.resetarRodada();
+
+    this.mao.preencher(this.baralho);
+  }
+
   private validarEstado(): void {
     if (this.placar.pontuacao >= this.placar.alvo) {
       alert('Parabéns! Você atingiu a pontuação necessária!');
@@ -55,15 +64,6 @@ export class JogoController {
     this.mao = new Mao();
     this.mesa = new Mesa();
     this.placar.avancarRodada();
-
-    this.mao.preencher(this.baralho);
-  }
-
-  private reiniciar(): void {
-    this.baralho = new Baralho();
-    this.mao = new Mao();
-    this.mesa = new Mesa();
-    this.placar.resetarRodada();
 
     this.mao.preencher(this.baralho);
   }

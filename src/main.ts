@@ -54,8 +54,17 @@ btnDescartar.addEventListener('click', () => {
     atualizarVisual();
 });
 
+const btnResetar = document.createElement('button');
+btnResetar.textContent = 'Reiniciar';
+btnResetar.classList.add("reiniciar");
+btnResetar.addEventListener('click', () => {
+    jogo.reiniciar();
+    atualizarVisual();
+});
+
 controles.appendChild(btnJogar);
 controles.appendChild(btnDescartar);
+controles.appendChild(btnResetar);
 
 app.appendChild(controles);
 
