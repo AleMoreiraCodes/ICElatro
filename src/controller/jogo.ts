@@ -20,9 +20,8 @@ export class JogoController {
 
   jogar() {
     const cartas = this.mao.jogar();
-    this.mesa.jogar(cartas);
+    const pontos = this.mesa.jogar(cartas);
 
-    const pontos = cartas.length * 10; // TODO: trocar pela lógica real de pontuação
     this.placar.adicionarPontos(pontos);
     this.placar.consumirJogada();
   }

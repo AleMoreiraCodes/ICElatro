@@ -25,16 +25,30 @@ export default class MesaElement extends HTMLElement {
   private render() {
     if (!this._mesa) return;
 
-    this.innerHTML = `<div class="table"></div>`;
+    this.innerHTML = ``;
 
-    const center = this.querySelector('.table')!;
+    const tableContainer = document.createElement('div');
+    tableContainer.classList.add("table-container");
+
+    const table = document.createElement('div');
+    table.classList.add("table");
+
+    tableContainer.appendChild(table);
+
     const cartas = this._mesa.getCartas();
 
     cartas.forEach(carta => {
-      const CartaElement = document.createElement('carta-element') as CartaElement;
-      CartaElement.carta = carta;
-      center.appendChild(CartaElement);
+      const cartaElement = document.createElement('carta-element') as CartaElement;
+      cartaElement.carta = carta;
+      table.appendChild(cartaElement);
     });
+
+    const combinacao = document.createElement('div');
+    combinacao.innerHTML = `${this._mesa.getCombinacao() ? `<div class="combinacao">${this._mesa.getCombinacao()}</div>` : ''}`;
+    tableContainer.appendChild(combinacao);
+
+    this.appendChild(tableContainer);
+
   }
 }
 

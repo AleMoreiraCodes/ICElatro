@@ -144,9 +144,9 @@ body::before {
   font-weight: bold;
 }
 
-.table {
+.table-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -164,6 +164,22 @@ body::before {
   min-height: 50vh;
   box-sizing: border-box;
   z-index: 2;
+}
+
+.table {
+  display: flex;
+  flex-direction: row;
+  width: 90%; 
+  height: 70%;
+  padding: 16px;     
+  justify-content: center; 
+  gap: 12px;
+}
+
+.combinacao {
+  bottom: 12px;
+  color: #fff;
+  font-size: 30px;
 }
 
 .hand {

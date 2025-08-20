@@ -1,4 +1,5 @@
-import type { Naipe, Carta, Valor } from './carta';
+import type { Naipe, Valor } from './carta';
+import { Carta } from './carta';
 
 export class Baralho {
   private cartas: Carta[] = [];
@@ -13,7 +14,7 @@ export class Baralho {
     const valores: Valor[] = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
     this.cartas = [];
     for (const naipe of naipes) {
-      for (const valor of valores) this.cartas.push({ naipe, valor });
+      for (const valor of valores) this.cartas.push(new Carta(naipe, valor));
     }
   }
 
