@@ -10,17 +10,17 @@ export class Mao {
     return [...this.cartas]; 
   }
 
-  addCarta(carta: Carta): void {
-    if (this.cartas.length < Mao.LIMITE) this.cartas.push(carta);
-  }
-
-  addCartas(cartas: Carta[]): void {
-    cartas.forEach(c => this.addCarta(c));
-  }
-
   preencher(baralho: Baralho): void {
     const faltam = Mao.LIMITE - this.cartas.length;
-    if (faltam > 0) this.addCartas(baralho.distribuir(Math.min(faltam, baralho.getTamanho())));
+    for (let i = 0; i < faltam; i++) {
+      this.cartas.push(baralho.sacar());
+    }
+  }
+
+  sacar(baralho: Baralho): void {
+    if (this.cartas.length < Mao.LIMITE) {
+      this.cartas.push(baralho.sacar());
+    }
   }
 
   selecionarIndice(index: number): void {

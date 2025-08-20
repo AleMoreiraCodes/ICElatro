@@ -15,7 +15,7 @@ export class JogoController {
     this.mesa = new Mesa();
     this.placar = new Placar(1, 100);
 
-    this.mao.addCartas(this.baralho.distribuir(Mao.LIMITE));
+    this.mao.preencher(this.baralho);
   }
 
   jogar() {
@@ -33,7 +33,6 @@ export class JogoController {
   }
 
   sacar() {
-    this.mao.addCartas(this.baralho.distribuir(1));
-    console.log(this.baralho.getTamanho());
+    this.mao.sacar(this.baralho); 
   }
 }

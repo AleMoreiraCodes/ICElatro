@@ -32,6 +32,7 @@ app.appendChild(placarElement);
 
 baralhoElement.addEventListener('sacar', () => {
     jogo.sacar();
+    atualizarVisual();
 });
 
 const controles = document.createElement('div');

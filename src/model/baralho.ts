@@ -24,7 +24,7 @@ export class Baralho {
     }
   }
 
-  distribuir(n: number): Carta[] { return this.cartas.splice(0, n); }
+  sacar(): Carta { return this.cartas.splice(0, 1)[0] }
   
   resetar(): void { this.inicializar(); this.embaralhar(); }
   
