@@ -39,7 +39,7 @@ export class Placar {
 
   avancarRodada() {
     this.rodada++;
-    this.alvo = this.pontuacao * 2;
+    this.alvo = this.alvo * 2;
     this.pontuacao = 0;
     this.jogadasRestantes = 5;
     this.descartesRestantes = 3;
