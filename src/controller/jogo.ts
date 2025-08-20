@@ -34,5 +34,6 @@ export class JogoController {
 
   sacar() {
     this.mao.addCartas(this.baralho.distribuir(1));
+    console.log(this.baralho.getTamanho());
   }
 }

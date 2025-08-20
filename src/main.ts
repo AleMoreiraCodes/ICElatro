@@ -19,7 +19,7 @@ app.appendChild(titulo);
 const jogo = new JogoController();
 
 const mesaElement = document.createElement('mesa-element') as MesaElement;
-const baralhoElement = document.createElement('deck-element') as BaralhoElement;
+const baralhoElement = document.createElement('baralho-element') as BaralhoElement;
 const maoElement = document.createElement('mao-element') as MaoElement;
 const placarElement = document.createElement('placar-element') as PlacarElement;
 
@@ -29,6 +29,10 @@ app.appendChild(mesaElement);
 app.appendChild(baralhoElement);
 app.appendChild(maoElement);
 app.appendChild(placarElement);
+
+baralhoElement.addEventListener('sacar', () => {
+    jogo.sacar();
+});
 
 const controles = document.createElement('div');
 controles.classList.add('controles');

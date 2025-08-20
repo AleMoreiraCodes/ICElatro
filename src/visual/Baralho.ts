@@ -5,10 +5,16 @@ export default class BaralhoElement extends HTMLElement {
 
   constructor() {
     super();
+    this.handleClick = this.handleClick.bind(this);
   }
 
   connectedCallback() {
     this.render();
+    this.addEventListener('click', this.handleClick);
+  }
+
+  disconnectedCallback() {
+    this.removeEventListener('click', this.handleClick);
   }
 
   set baralho(baralho: Baralho) {
@@ -20,8 +26,12 @@ export default class BaralhoElement extends HTMLElement {
     return this._baralho;
   }
 
+  private handleClick() {
+    this.dispatchEvent(new CustomEvent('sacar', {}));
+  }
+
   private render() {
-    if (!this._baralho) return; 
+    if (!this._baralho) return;
 
     this.innerHTML = `
       <div class="deck-container">
